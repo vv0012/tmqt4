@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  mosquitto:
+    container_name: mqtt-container
+    image: eclipse-mosquitto
+    volumes:
+      - ./mosquitto:/mosquitto/config
+    ports:
+      - 8883:8883
+      - 9001:9001
+    networks:
+      - mqtt-network
+
+networks:
+  mqtt-network:
+    driver: bridge
+  express-network:
+    driver: bridge
