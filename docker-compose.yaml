@@ -12,8 +12,19 @@ services:
     networks:
       - mqtt-network
 
+  server:
+    container_name: server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm start
+    ports:
+      - 8080:8080
+    networks:
+      - mqtt-network
+    depends_on:
+      - mosquitto
+
 networks:
   mqtt-network:
-    driver: bridge
-  express-network:
     driver: bridge
