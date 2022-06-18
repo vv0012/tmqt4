@@ -3,6 +3,9 @@
  *
  * please hold job information to a database, this phase is skipped due to project \
  * being time-force mvp
+ *
+ * schedule is not used currently, scheduling is handled in client side.
+ * current strategy may not work! not deleting this module
  */
 
 const schedule = require("node-schedule");
