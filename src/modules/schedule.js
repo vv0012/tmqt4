@@ -5,6 +5,7 @@
  * being time-force mvp
  */
 
+const schedule = require("node-schedule");
 const logger = require("../winston");
 
 module.exports = (function () {
@@ -15,11 +16,21 @@ module.exports = (function () {
   class SchduleHelper {
     jobs = [];
     constructor() {}
-    createJob() {}
-    deleteJob() {}
-    updateJob() {}
-    getJob() {}
-    getJobs() {}
+    createJob(id, date) {
+      schedule.scheduleJob(id, date, () => {});
+    }
+    deleteJob(id) {
+      const job = this.getJob(id);
+      if (job) job.cancel();
+    }
+    updateJob(id, date) {
+      const job = this.getJob(id);
+      if (job) job.reschedule(date);
+    }
+    getJob(id) {
+      const job = schedule.scheduledJobs[id];
+      return job;
+    }
   }
   instance = null;
   return function () {
