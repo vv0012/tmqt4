@@ -1,0 +1,2 @@
+user mosquitto
+topic readwrite tenis1/#
