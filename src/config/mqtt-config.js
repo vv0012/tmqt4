@@ -9,7 +9,6 @@ module.exports = {
   protocol: "mqtt",
   clean: true,
   connectTimeout: 4000,
-  protocol: "mqtt",
   username: "alim",
   password: "a111111",
   reconnectPeriod: 10000,

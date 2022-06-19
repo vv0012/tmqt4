@@ -27,9 +27,9 @@ module.exports = (function createConnect() {
           level: "info",
         });
       });
-      this.service.on("error", () => {
+      this.service.on("error", (err) => {
         logger.error({
-          message: "mqtt error",
+          message: "mqtt error " + err,
           level: "error",
         });
       });
