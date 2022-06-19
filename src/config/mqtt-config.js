@@ -4,7 +4,7 @@
 
 module.exports = {
   host: "mosquitto",
-  port: "1883",
+  port: "9001",
   path: "",
   protocol: "mqtt",
   clean: true,
