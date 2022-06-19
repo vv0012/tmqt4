@@ -18,7 +18,7 @@ function postCommand(req, res, next) {
         message: "invalid data",
       });
     }
-    mqtt().publish("m-topic", data.schedule, (result, err) => {
+    mqtt().publish("tenis1/command", data.schedule, (result, err) => {
       if (err) {
         return res.status(500).json({
           message: "error while sending message to device",
