@@ -12,8 +12,8 @@ services:
     networks:
       - mqtt-network
 
-  server:
-    container_name: server
+  express-server:
+    container_name: express-server
     build:
       context: .
       dockerfile: Dockerfile
