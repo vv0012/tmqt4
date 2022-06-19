@@ -21,9 +21,17 @@ module.exports = (function createConnect() {
         ...config,
         clientId: id,
       });
-      logger.log({
-        message: `mqtt connection created with id : ${id}`,
-        level: "info",
+      this.service.on("connect", () => {
+        logger.log({
+          message: `mqtt connection created with id : ${id}`,
+          level: "info",
+        });
+      });
+      this.service.on("error", () => {
+        logger.error({
+          message: "mqtt error",
+          level: "error",
+        });
       });
     }
     // probably never needed!, returns mqtt instance itself. avoid using this. add methods to class instead

@@ -3,6 +3,8 @@ const app = express();
 const logger = require("./winston");
 const bodyParser = require("body-parser");
 
+require("./modules/mqtt")();
+
 app.use(bodyParser({ extended: true }));
 
 logger.log({
