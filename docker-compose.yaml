@@ -3,7 +3,14 @@ version: "3"
 services:
   mosquitto:
     container_name: mqtt-container
+    build:
+      context: mosquitto
+      dockerfile: Dockerfile
+    environment:
+      - MOSQUITTO_USERNAME=alim
+      - MOSQUITTO_PASSWORD=a111111
     image: eclipse-mosquitto
+    restart: always
     volumes:
       - ./mosquitto:/mosquitto/config
     ports:
