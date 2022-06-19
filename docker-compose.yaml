@@ -10,9 +10,6 @@ services:
       - MOSQUITTO_USERNAME=alim
       - MOSQUITTO_PASSWORD=a111111
     image: eclipse-mosquitto
-    restart: always
-    volumes:
-      - ./mosquitto:/mosquitto/config
     ports:
       - 1883:1883
       - 9001:9001
