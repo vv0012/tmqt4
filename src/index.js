@@ -21,7 +21,7 @@ logger.warn({
   level: "warn",
 });
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 
 const CommandRouter = require("./routes/command.routes");
 
