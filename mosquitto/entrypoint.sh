@@ -22,6 +22,8 @@ fi
 
 # create mosquitto passwordfile
 touch passwordfile
+echo $MOSQUITTO_USERNAME
+echo $MOSQUITTO_PASSWORD
 mosquitto_passwd -b passwordfile $MOSQUITTO_USERNAME $MOSQUITTO_PASSWORD
 
 exec "$@"
