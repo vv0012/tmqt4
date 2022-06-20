@@ -7,8 +7,8 @@ services:
       context: mosquitto
       dockerfile: Dockerfile
     environment:
-      - MOSQUITTO_USERNAME="alim"
-      - MOSQUITTO_PASSWORD="a111111"
+      - MOSQUITTO_USERNAME=alim
+      - MOSQUITTO_PASSWORD=a111111
     image: eclipse-mosquitto
     ports:
       - 1883:1883
