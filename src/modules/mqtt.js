@@ -40,13 +40,17 @@ module.exports = (function createConnect() {
     }
     publish(topic, message, cb) {
       logger.log({
-        message: `publising message: "${message}" on "${topic}" topic`,
+        message: `publising message: "${JSON.stringify(
+          message
+        )}" on "${topic}" topic`,
         level: "info",
       });
       this.service.publish(topic, JSON.stringify(message), (err) => {
         if (!err) return cb(true, null);
         logger.log({
-          message: `error while publishing message on topic : ${topic}, message content: ${message}, error message: ${err}`,
+          message: `error while publishing message on topic : ${topic}, message content: ${JSON.stringify(
+            message
+          )}, error message: ${err}`,
           level: "error",
         });
         return cb(null, err);
