@@ -37,12 +37,12 @@ module.exports = (function createConnect() {
         try {
           if (topic === "tenis1/acc") {
             accLogger.info({
-              message: message.toString(),
+              message: JSON.parse(message.toString()),
               level: "acc_log",
             });
           } else if (topic === "tenis1/command") {
             commandLogger.info({
-              message: message.toString(),
+              message: JSON.parse(message.toString()),
               level: "command_log",
             });
           }
