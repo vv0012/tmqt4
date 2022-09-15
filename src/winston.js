@@ -2,6 +2,7 @@ const winston = require("winston");
 
 const logConf = {
   transports: [
+    new winston.transports.Console(),
     new winston.transports.File({ filename: "logs/logs.log" }),
     new winston.transports.File({
       filename: "logs/errors.log",
