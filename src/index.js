@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const logger = require("./winston");
+const { logger } = require("./winston");
 const bodyParser = require("body-parser");
 
 require("./modules/mqtt")();

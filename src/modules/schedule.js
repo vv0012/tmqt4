@@ -9,7 +9,7 @@
  */
 
 const schedule = require("node-schedule");
-const logger = require("../winston");
+const { logger } = require("../winston");
 
 module.exports = (function () {
   logger.warn({

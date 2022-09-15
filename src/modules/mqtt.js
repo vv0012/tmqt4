@@ -9,7 +9,7 @@
 const mqtt = require("mqtt");
 const config = require("../config/mqtt-config");
 const { randomBytes } = require("crypto");
-const logger = require("../winston");
+const { logger, accLogConf, commandLogConf } = require("../winston");
 
 module.exports = (function createConnect() {
   class MqttConnection {
@@ -34,14 +34,13 @@ module.exports = (function createConnect() {
         });
       });
       this.service.on("tenis1/acc", (data) => {
-        console.log("some thing there", data);
-        logger.info({
+        accLogConf.info({
           message: data,
           level: "acc_log",
         });
       });
       this.service.on("tenis1/command", (data) => {
-        logger.info({
+        commandLogConf.info({
           message: data,
           level: "command_log",
         });

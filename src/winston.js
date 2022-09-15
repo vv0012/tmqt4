@@ -8,14 +8,6 @@ const logConf = {
       filename: "logs/errors.log",
       level: "error",
     }),
-    new winston.transports.File({
-      filename: "logs/acc_log.log",
-      level: "acc_log",
-    }),
-    new winston.transports.File({
-      filename: "logs/command_log.log",
-      level: "command_log",
-    }),
   ],
   format: winston.format.combine(
     winston.format.label({
@@ -33,4 +25,18 @@ const logConf = {
 
 const logger = winston.createLogger(logConf);
 
-module.exports = logger;
+const accLogConf = {
+  transports: [new winston.transports.File({ filename: "logs/acc_log.log" })],
+};
+
+const commandLogConf = {
+  transports: [
+    new winston.transports.File({ filename: "logs/command_log.log" }),
+  ],
+};
+
+const accLogger = winston.createLogger(accLogConf);
+
+const commandLogger = winston.createLogger(commandLogConf);
+
+module.exports = { logger, accLogConf, commandLogConf };

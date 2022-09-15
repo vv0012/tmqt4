@@ -2,7 +2,7 @@
  * command service
  */
 
-const logger = require("../winston");
+const { logger } = require("../winston");
 const mqtt = require("../modules/mqtt");
 
 function postCommand(req, res, next) {
