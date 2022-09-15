@@ -34,18 +34,19 @@ module.exports = (function createConnect() {
         });
       });
       this.service.on("message", (topic, message, packet) => {
-        console.log("message", topic, message);
-        if (topic === "tenis1/acc") {
-          accLogger.info({
-            message: message,
-            level: "acc_log",
-          });
-        } else if (topic === "tenis1/command") {
-          commandLogger.info({
-            message: message,
-            level: "command_log",
-          });
-        }
+        try {
+          if (topic === "tenis1/acc") {
+            accLogger.info({
+              message: message.toString(),
+              level: "acc_log",
+            });
+          } else if (topic === "tenis1/command") {
+            commandLogger.info({
+              message: message.toString(),
+              level: "command_log",
+            });
+          }
+        } catch (err) {}
       });
       this.service.subscribe("tenis1/acc", (data) => {});
       this.service.subscribe("tenis1/command", (data) => {});
