@@ -9,7 +9,7 @@
 const mqtt = require("mqtt");
 const config = require("../config/mqtt-config");
 const { randomBytes } = require("crypto");
-const { logger, accLogConf, commandLogConf } = require("../winston");
+const { logger, accLogger, commandLogger } = require("../winston");
 
 module.exports = (function createConnect() {
   class MqttConnection {
@@ -33,18 +33,22 @@ module.exports = (function createConnect() {
           level: "error",
         });
       });
-      this.service.on("tenis1/acc", (data) => {
-        accLogConf.info({
-          message: data,
-          level: "acc_log",
-        });
+      this.service.on("message", (topic, message, packet) => {
+        console.log("message", topic, message);
+        if (topic === "tenis1/acc") {
+          accLogger.info({
+            message: message,
+            level: "acc_log",
+          });
+        } else if (topic === "tenis1/command") {
+          commandLogger.info({
+            message: message,
+            level: "command_log",
+          });
+        }
       });
-      this.service.on("tenis1/command", (data) => {
-        commandLogConf.info({
-          message: data,
-          level: "command_log",
-        });
-      });
+      this.service.subscribe("tenis1/acc", (data) => {});
+      this.service.subscribe("tenis1/command", (data) => {});
     }
     // probably never needed!, returns mqtt instance itself. avoid using this. add methods to class instead
     getMqttInstance() {

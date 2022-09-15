@@ -39,4 +39,4 @@ const accLogger = winston.createLogger(accLogConf);
 
 const commandLogger = winston.createLogger(commandLogConf);
 
-module.exports = { logger, accLogConf, commandLogConf };
+module.exports = { logger, accLogger, commandLogger };
