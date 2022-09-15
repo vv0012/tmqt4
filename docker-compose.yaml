@@ -22,6 +22,8 @@ services:
       context: .
       dockerfile: Dockerfile
     command: npm start
+    volumes:
+      - "./logs:/app/logs"
     ports:
       - 8000:8000
     networks:

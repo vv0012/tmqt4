@@ -33,6 +33,19 @@ module.exports = (function createConnect() {
           level: "error",
         });
       });
+      this.service.on("tenis1/acc", (data) => {
+        console.log("some thing there", data);
+        logger.info({
+          message: data,
+          level: "acc_log",
+        });
+      });
+      this.service.on("tenis1/command", (data) => {
+        logger.info({
+          message: data,
+          level: "command_log",
+        });
+      });
     }
     // probably never needed!, returns mqtt instance itself. avoid using this. add methods to class instead
     getMqttInstance() {
